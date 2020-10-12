@@ -1,4 +1,4 @@
-/* 3 - Combien
+/* Combien - TORRES Lyam
  */
 
 #include <iostream>
@@ -9,7 +9,7 @@ int main() {
     int nb, toto, cpt;
 
     cout << "Donnez la valeur de nb: ";
-    cin >> nb; 
+    cin >> nb; // Tester pour nb = 1, 2 et 3
     toto = 0; cpt = 0;
     while(cpt <= nb) {
         toto = toto + cpt;
