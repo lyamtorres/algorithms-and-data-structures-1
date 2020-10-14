@@ -1,31 +1,32 @@
-/* 1 - Tu erre en série  - Lyam Torres
- */
+/* 
+            1 - Tu erre en série
+*/
 
 #include <iostream>
 
 using namespace std;
 
-struct serie {
+struct Serie {
     string nom;
     int anneeCreation;
 };
 
-struct saison {
-    serie origine;
+struct Saison {
+    Serie origine;
     int annee;
     int numero;
     int nbEpisodes;
 };
 
-struct episode {
-    saison provenance;
+struct Episode {
+    Saison provenance;
     int numero;
     string titre;
 };
 
 int main() {
     // Algorithme démoun
-    serie h50, h50bis;
+    Serie h50, h50bis;
     int an;
 
     h50.nom = "Hawaii 5.0";
@@ -38,7 +39,7 @@ int main() {
 
 /*
     // Algorithme démodeux
-    saison ST1;
+    Saison ST1;
 
     ST1.annee = 1966;
     ST1.numero = 1;
