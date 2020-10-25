@@ -9,20 +9,20 @@ using namespace std;
 
 
 int main() {
-    Instant Instant1, Instant2;
+    Instant instant1, instant2;
 
     cout << "|| PREMIER INSTANT ||" << endl;
-    Instant1 = saisirInstant();
-    afficher(Instant1);
+    instant1 = saisirInstant();
+    afficher(instant1);
     cout << "" << endl;
-    Instant1 = avancerUneSecondeBis(Instant1);
-    afficher(Instant1);
+    instant1 = avancerUneSecondeBis(instant1);
+    afficher(instant1);
     cout << "" << endl;
     cout << "|| DEUXIEME INSTANT ||" << endl;
-    Instant2 = saisirInstant();
-    afficher(Instant2);
+    instant2 = saisirInstant();
+    afficher(instant2);
     cout << "" << endl;
-    convertir(Instant1, Instant2);
+    convertir(instant1, instant2);
     return 0;
 }
 
