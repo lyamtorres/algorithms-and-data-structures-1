@@ -1,63 +1,97 @@
-            /*
-                3 - Tableaux simples
-            */
+/*
+            3 - Tableaux simples
+*/
 
 #include <iostream>
+#include "main.h"
 
 using namespace std;
 
-struct t_tabR {
-    int capacite;
-    float *cases;
-};
-
-void permutation(float tab[], int taille);
-
-void afficher(float tab[], int taille);
-
-void modifier(t_tabR tabReels);
-
-// Préconditions: nouvTab.capacite > 0
-void nouveauTableau();
-
 int main() {
+    // 1.b
 
-t_tabR desReels;
-    int pos;
+/*     // Algorithme desReels - Première partie
+    int indi = 0;
+    int nbReels = 3;
+    float t3r[nbReels]; 
+
+    t3r[1] = 9.9;
+    t3r[2] = t3r[1] + 1.1;
+    indi = 1;
+    t3r[indi] = 7.5;
+    t3r[indi - 1] = 5.6;
+    for(indi = 0; indi < nbReels; indi++) {
+        t3r[indi] = t3r[indi] * 2;
+    }
+    for(indi = 0; indi < nbReels; indi++) {
+        cout << t3r[indi] << endl;
+    }
+
+    // Algorithme desReels - Deuxième partie
+    t_tabR desReels;
+    int pos = 0;
     float *ptab;
 
-    nouveauTableau();
-
-/*
     desReels.cases = new float[5];
-    desReels.capacite = 5;
+    desReels.capa = 5;
     desReels.cases[4] = 3.14;
     ptab = desReels.cases;
-
-    for(pos = 1; pos < 3; ++pos ) {
+    for(pos = 1; pos < 3; pos++) {
         ptab[pos] = ptab[5 - pos] + 1;
         ptab[4 - pos] = ptab[pos] * 2;
     }
-    for(pos = 0; pos < desReels.capacite / 2; ++pos) {
-        cout << desReels.cases[4 - pos] << endl;
+    for(pos = 0; pos < desReels.capa / 2; pos++) {
+        cout << "desReels.cases[" << pos << "] = " << desReels.cases[4 - pos] << endl;
     }
+    delete[] desReels.cases;
+    desReels.cases = nullptr;
+    ptab = nullptr; */
 
-    for(pos = 0; pos < 5; ++pos) {
-        cout << "ptab[" << pos << "] = " << ptab[pos] << endl;
+
+
+/*     // 1.c
+    int nbReels = 3;
+    float t3r[nbReels] = {4, 8, 12};
+
+    permutation(t3r, nbReels);
+    afficher(t3r, nbReels); */
+
+
+
+    // 1.d - Test pour la procédure modifierTableau
+/*     t_tabR desReels;
+
+    desReels.capa = 3;
+    desReels.cases = new float[desReels.capa];
+    desReels.cases[0] = 5;
+    desReels.cases[1] = 10;
+    desReels.cases[2] = 15;
+
+    modifierTableau(desReels);
+
+    for(int i = 0; i < desReels.capa; i++) {
+        cout << "desReels.cases[" << i << "] = " << desReels.cases[i]<< endl;
     }
-    cout << "" << endl;
-    modifier(desReels);
-    cout << "" << endl;
     
-    for(pos = 0; pos < 5; ++pos) {
-        cout << "ptab[" << pos << "] = " << ptab[pos] << endl;
+    delete[] desReels.cases;
+    desReels.cases = nullptr; */
+
+
+
+    // 1.d - Test pour la procédure saisirTableau
+    t_tabR desReels;
+    saisirTableau(desReels);
+    cout << endl;
+
+    for(int i = 0; i < desReels.capa; i++) {
+        cout << "desReels.cases[" << i << "] = " << desReels.cases[i]<< endl;
     }
 
     delete[] desReels.cases;
-*/
+    desReels.cases = nullptr;
+
     return 0;
 }
-
 
 void permutation(float tab[], int taille) {
     float tmp;
@@ -69,65 +103,39 @@ void permutation(float tab[], int taille) {
 }
 
 void afficher(float tab[], int taille) {
-    int indi;
+    int i;
 
-    for(indi = 0; indi < 3; ++indi) {
-        cout << tab[indi] << ", " << endl;
+    for(i = 0; i < taille; i++) {
+        if(i < taille - 1) {
+            cout << tab[i] << ", ";
+        } else {
+            cout << tab[i] << endl;
+        }
     }
 }
 
-void modifier(t_tabR tabReels) {
+void modifierTableau(t_tabR tableauReels) {
     float valeur = 0;
     int indice = 0;
 
-    cout << "Donner une nouvelle valeur: " << endl;
+    cout << "Donnez une valeur: " << endl;
     cin >> valeur;
     do {
-        cout << "Indiquer le numero de case pour rentrer la valeur: " << endl;
+        cout << "Donnez un indice: " << endl;
         cin >> indice;
-    } while (indice >= tabReels.capacite);
-    tabReels.cases[indice] = valeur;
+    } while (indice < 0 || indice >= tableauReels.capa);
+    tableauReels.cases[indice] = valeur;
 }
 
-void nouveauTableau() {
-    t_tabR nouvTab;
+void saisirTableau(t_tabR &nouveauTableau) { // Les tableaux dynamiques doivent-ils aussi être passées en modification ?
 
-    cout << "|| NOUVEAU TABLEAU ||" << endl;
-    cout << "Ajouter le nombre de cases: " << endl;
-    cin >> nouvTab.capacite;
-    nouvTab.cases = new float[nouvTab.capacite];
-    cout << "Donner la valeur des cases: " << endl;
+    cout << "Donner le nombre de cases : " << endl;
+    cin >> nouveauTableau.capa;
+    nouveauTableau.cases = new float[nouveauTableau.capa];
 
-    for (int i = 0; i < nouvTab.capacite; ++i) {
-        cout << "nouvTab[" << i << "] : ";
-        cin >> nouvTab.cases[i];
-        cout << "" << endl;
+    cout << "Donner la valeur de chaque case : " << endl;
+    for (int i = 0; i < nouveauTableau.capa; i++) {
+        cout << "nouveauTableau[" << i << "] : ";
+        cin >> nouveauTableau.cases[i];  
     }
-
-    for (int i = 0; i < nouvTab.capacite; ++i) {
-        cout << "nouvTab[" << i << "] : " << nouvTab.cases[i] << endl;
-    }
-
-    delete[] nouvTab.cases;
 }
-
-/*
-    const int tailleTableau(3);
-    int indi;
-    float t3r[tailleTableau];
-
-    t3r[1] = 9.9;
-    t3r[2] = t3r[1] + 1.1;
-    indi = 1;
-    t3r[indi] = 7.5;
-    t3r[indi - 1] = 5.6;
-
-    for(indi = 0; indi < 3; ++indi) {
-        t3r[indi] = t3r[indi] * 2;
-    }
-    afficher(t3r, tailleTableau);
-    //permutation(t3r, tailleTableau);
-     for(indi = 0; indi < 3; ++indi) {
-        cout << "t3r[" << indi << "] = " << t3r[indi] << endl;
-    }
-*/
