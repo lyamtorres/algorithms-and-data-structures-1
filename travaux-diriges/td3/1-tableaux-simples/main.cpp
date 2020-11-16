@@ -1,5 +1,5 @@
 /*
-            3 - Tableaux simples
+            1 - Tableaux simples
 */
 
 #include <iostream>
@@ -114,7 +114,7 @@ void afficher(float tab[], int taille) {
     }
 }
 
-void modifierTableau(t_tabR tableauReels) {
+void modifierTableau(t_tabR &tableauReels) {
     float valeur = 0;
     int indice = 0;
 
@@ -127,7 +127,7 @@ void modifierTableau(t_tabR tableauReels) {
     tableauReels.cases[indice] = valeur;
 }
 
-void saisirTableau(t_tabR &nouveauTableau) { // Les tableaux dynamiques doivent-ils aussi être passées en modification ?
+void saisirTableau(t_tabR &nouveauTableau) { // Les tableaux dynamiques doivent-ils être passées en modification ?
 
     cout << "Donner le nombre de cases : " << endl;
     cin >> nouveauTableau.capa;
