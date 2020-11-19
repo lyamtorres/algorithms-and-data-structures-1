@@ -25,7 +25,7 @@ int main() {
     }
     for(indi = 0; indi < nbReels; indi++) {
         cout << t3r[indi] << endl;
-    }
+    } */
 
     // Algorithme desReels - Deuxième partie
     t_tabR desReels;
@@ -45,7 +45,7 @@ int main() {
     }
     delete[] desReels.cases;
     desReels.cases = nullptr;
-    ptab = nullptr; */
+    ptab = nullptr;
 
 
 
