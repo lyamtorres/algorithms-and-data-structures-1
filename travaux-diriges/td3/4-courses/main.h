@@ -1,16 +1,24 @@
-struct Produit {
-    std::string nomProduit;
-    bool coche; 
+int const nombreCases(100);
+
+struct Article {
+    std::string nom;
+    bool estCoche; 
 };
 
-// Permet de cocher ou decocher un element d'indice k dans la liste
-void cocherDecocher(Produit tab[], int taille, int occupees, int k);
+struct ListeDeCourses {
+    Article articles[nombreCases];
+    int casesOccupees; 
+};
 
-// Permet de décocher tout les éléments de la liste
-void decocherTout(Produit tab[], int taille);
+void afficherListe(ListeDeCourses l);
 
-void afficherListe(Produit tab[], int taille);
+// Précondition : La liste doit être initialisée
+void decocherArticles(ListeDeCourses &l);
 
-void ajouterArticle(Produit tab[], int taille, int &occupees, Produit p);
+// Précondition : liste.nb_items < NB_ARTICLE
+void ajouterArticle(Article tab[], int taille, int &occupees, Article p);
 
-void supprimerArticle(Produit tab[], int taille, int pos);
+// Précondition : Il existe bien un article de ce nom dans la liste 
+void supprimerArticle(Article tab[], int taille, int pos);
+
+void cocherDecocher(Article tab[], int taille, int occupees, int k);
